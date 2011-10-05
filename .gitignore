@@ -1,0 +1,5 @@
+.project
+.settings
+.buildpath
+PHPUnit_Parallel-*.tgz
+*~
