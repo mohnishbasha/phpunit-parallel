@@ -62,11 +62,11 @@
 
   if(isset($opt['f'])) {
     $suites = explode("\n",trim(`php list_failing_units.php`));
-    if(!$suites) { print "No failed/incomplete fests found."; exit; }
-    print "Running only failed/incomplete fests: " . implode(' ',$suites) . "\n";
+    if(!$suites) { print "No failed/incomplete tests found."; exit; }
+    print "Running only failed/incomplete tests: " . implode(' ',$suites) . "\n";
   }
 
-  //If there are no suites specified, get a list of all fests in the /tests dir. Filtering by group if that's specified.
+  //If there are no suites specified, get a list of all tests in the /tests dir. Filtering by group if that's specified.
   if(!$suites) {
     //  Enumerate files to run
     $suites = array();
