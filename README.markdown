@@ -35,4 +35,3 @@ Command line arguments:
     -v  When used with -t, includes the times of the individual tests
         within suites.
     -x  Generate XML log and store it at the given path (i.e. -x log.xml)
-    -f Only run failing/incomplete tests

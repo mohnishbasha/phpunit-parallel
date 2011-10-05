@@ -26,7 +26,6 @@
    *  -v  When used with -t, includes the times of the individual tests
    *      within suites.
    *  -x  Generate XML log and store it at the given path (i.e. -x log.xml)
-   *  -f Only run failing/incomplete tests
    */
 
   $opt = getopt('c:tvfs:x:g:');
@@ -58,12 +57,6 @@
     echo "This is a unit test\n";
     define('kTestsDirectory', getcwd());
     define('kCommand', 'phpunit --log-json %s %s');
-  }
-
-  if(isset($opt['f'])) {
-    $suites = explode("\n",trim(`php list_failing_units.php`));
-    if(!$suites) { print "No failed/incomplete tests found."; exit; }
-    print "Running only failed/incomplete tests: " . implode(' ',$suites) . "\n";
   }
 
   //If there are no suites specified, get a list of all tests in the /tests dir. Filtering by group if that's specified.
