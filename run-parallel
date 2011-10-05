@@ -38,12 +38,6 @@
 
   define('kMaxRunningSuites', $max_running_suites);
   define('kSlowSuiteThreshold', 1.0);
-  define('kTestSuiteFinish', '>');
-  define('kTestSuiteStart', '<');
-  define('kTestError', 'E');
-  define('kTestFailed', 'F');
-  define('kTestPassed', '.');
-  define('kTestSkipped', 'S');
 
   echo "\nOMGUnit 0.2.1 by Mark <3: ";
 
@@ -198,7 +192,7 @@
           $suite['start_time'] = microtime(true);
           $running_suites[] = $suite;
           unset($pending_suites[$index]);
-          echo kTestSuiteStart;
+          echo '<';
           break;
         }
       }
@@ -232,18 +226,18 @@
 
           if($info['status'] == 'pass') {
             $summary['pass']++;
-            echo kTestPassed;
+            echo '.';
           } else if ($info['status'] == 'fail') {
             $summary['fail'][] = $info;
-            echo kTestFailed;
+            echo 'F';
           } else if ($info['status'] == 'error') {
             //  Might just be a skipped test
             if($info['message'] == 'Skipped Test') {
               $summary['skip']++;
-              echo kTestSkipped;
+              echo 'S';
             } else {
               $summary['error'][] = $info;
-              echo kTestError;
+              echo 'E';
             }
           }
         }
@@ -258,7 +252,7 @@
         //  Mark test as completed
         $completed_suites[] = $suite;
         unset($running_suites[$index]);
-        echo kTestSuiteFinish;
+        echo '>';
       }
     }
 
