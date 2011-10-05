@@ -65,11 +65,11 @@
     $suites = array();
     if($group){
       $grep_command = "grep -lr \"@group $group\" . | grep -v svn | grep -v UnderDev | cut -d/ -f2";
-      $file_pointer = popen( $grep_command, "r" );
-        while($hit = fgets($file_pointer, 4096)) {
+      $process = popen( $grep_command, "r" );
+        while($hit = fgets($process, 4096)) {
           $suites[] = trim($hit);
         }
-      pclose($file_pointer);
+      pclose($process);
     } else {
       $d = dir(kTestsDirectory);
       while (($entry = $d->read()) !== false) {
