@@ -154,6 +154,7 @@
     foreach($suites as $suite) {
       $output_file = tempnam('/tmp/omgunit/', sha1(__FILE__) . '-' . $suite . '.json');
       $command = sprintf(kCommand, $output_file, $suite);
+      echo ' ' . $command . "\n";
       $pending_suites[] = array(
         'handle' => $suite['handle'],
         'command' => $command,
